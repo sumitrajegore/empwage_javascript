@@ -9,6 +9,8 @@
     let totalworkingdays=0;
     let totalEmpHrs=0;
     let empDailywageArr= new Array();
+    let empDailywageMap = new Map();
+    let empDailyHrMap = new Map();
 
     function caLCDailywage(empHrs) {
 
@@ -36,6 +38,8 @@
     empHrs = getWorkingHours(empcheck); 
     totalEmpHrs += empHrs;
     empDailywageArr.push(caLCDailywage(empHrs));
+    empDailyHrMap.set(totalworkingdays, empHrs);
+    empDailywageMap.set(totalworkingdays, caLCDailywage(empHrs));
     }
     let totalempwage = caLCDailywage(totalEmpHrs);
     console.log(" Total Hours : " +totalEmpHrs +"    "+ "EMP WAGE IS : " +totalempwage+"   "+"total_day_month :" +totalworkingdays);
@@ -108,3 +112,31 @@
 
     //UC8
     //console.log("\n UC8A empwage map total Hrs : " + Array.from(empDailywageMap.values()).reduce(totalempwage, 0));
+ 
+    //UC9A
+    const findtotal = (totalval, dailyval) => {
+
+        return totalval+dailyval;
+    }
+    let count =0;
+    let totalHours = Array.from(empDailyHrMap.values()).reduce(findtotal,0);
+    let totalSalary = empDailywageArr.filter(dailywage => dailywage > 0)
+                                      .reduce(findtotal,0);
+    console.log("\n UC9A - Emp wage with arrow : " + "Total Hours : "+totalHours + " TotalSalary : " +totalSalary +"\n");
+    
+    //UC9B
+    let nonWorkingdays = new Array();
+    let partWorkingdays = new Array();
+    let fullWorkingdays = new Array();
+    empDailyHrMap.forEach( (value, key, map) => {
+
+        if (value == 8) fullWorkingdays.push(key);
+        else if (value == 4) partWorkingdays.push(key);
+        else nonWorkingdays.push(key);
+    });
+    console.log(" UC9-B Full working days : " +fullWorkingdays);
+    console.log(" part working days : " +partWorkingdays);
+    console.log(" Non working days : " +nonWorkingdays);
+    console.log("\n");
+
+
