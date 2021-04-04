@@ -142,3 +142,4 @@ console.log("---------------------------------------------------");
 //UC8
 console.log("Emp Wage with reduce: " + Array.from(empDailyWageMap.values()).reduce(totalempwagess, 0));
 console.log("---------------------------------------------------");
+
