@@ -38,3 +38,4 @@
     }
     let empwage = caLCDailywage(totalEmpHrs);
     console.log("Total Hours : " +totalEmpHrs +"    "+ "EMP WAGE IS : " +empwage+"   "+"total_day_month :" +totalworkingdays);
+    console.log(" Daily wages are : " +empDailywageArr);
